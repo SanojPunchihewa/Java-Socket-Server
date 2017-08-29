@@ -13,8 +13,9 @@ public class JavaServer {
     }
 
     private void loop_socket() throws IOException{
-        Socket socket = serverSocket.accept();
+        
         while(true){
+            Socket socket = serverSocket.accept();
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -25,7 +26,7 @@ public class JavaServer {
                     writer.flush();
                 }
             }catch (IOException e){
-
+                e.printStackTrace();
             }finally {
                 socket.close();
             }
